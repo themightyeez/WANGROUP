@@ -1,0 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.navbar-custom.navbar-dark .navbar-nav .nav-link {
+    color: #fff;
+}
+
+.navbar-custom .bg-purple {
+    background-color: #391484;
+    transition: 0.3s;
+}
+
+.navbar-custom .btn-account {
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.navbar-custom .btn-account-kanan {
+    background-image: linear-gradient(rgba(233, 163, 191, 100), rgba(233, 163, 191, 50));
+    color: #372642;
+    transition: 0.3s;
+}
+
+.navbar-custom .btn-account-kanan:hover {
+    background-image: linear-gradient(#A1BAE3, #A1BAE3);
+    color: #372642;
+    transition: 0.3s;
+}
+
+.navbar-custom .nav-link:hover {
+    background-image: linear-gradient(#A1BAE3, #A1BAE3);
+    color: #372642;
+    transition: 0.3s;
+}
+
+.footer-custom .footer-text-title {
+        font: 600 1.5rem Poppins, sans-serif;
+        margin-bottom: 1.5rem;
+}
+
+.footer-custom hr.hr {
+    margin: 0;
+    border: 0;
+    border-top: 1px solid rgba(46, 46, 90, 1);
+}
+
+.footer-custom .border-color {
+    color: #707092;
+}
+
+.footer-custom .footer-link {
+    color: #707092;
+}
+
+.footer-custom .footer-link:hover {
+    color: #ffffff;
+}
+
+.footer-custom .social-media-c:hover circle,
+.footer-custom .social-media-p:hover path {
+    fill: #ffffff;
+}
+
+.footer-custom .info-footer {
+    padding: 0 1rem;
+}
+
+
+@media (min-width: 768px) {
+    .footer-custom .info-footer {
+        padding: 0 4rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .footer-custom .info-footer {
+        padding: 0 6rem;
+    }
+
+    .navbar-custom .btn-account {
+        border-radius: 20px;
+        padding: 12px 24px;
+        font-weight: 500;
+    }
+    
+    .navbar-custom .btn-account-kanan {
+        background-image: linear-gradient(rgba(233, 163, 191, 100), rgba(233, 163, 191, 50));
+        color: #372642;
+        transition: 0.3s;
+    }
+    
+    .navbar-custom .btn-account-kanan:hover {
+        background-image: linear-gradient(#A1BAE3, #A1BAE3);
+        color: #372642;
+        transition: 0.3s;
+    }
+    
+}
+
+.bg-card {
+    background-color: #707092;
+}
+
+.rounded-custom {
+    border-radius: 1rem;
+}
+
+.rounded-bottom-custom {
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+
+.rounded-top-custom {
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+.btn-custom-submit {
+    background-color: #e6942ade;
+    color: #fff;
+}
+
+.nav-pills .nav-link.request.active, .nav-pills .show > .nav-link.request {
+    color: #fff;
+    background-color: #22a731;
+}
+
+.nav-pills .nav-link.return.active, .nav-pills .show > .nav-link.return {
+    color: #fff;
+    background-color: #e63c3cde;
+}
+
+.nav-pills .nav-link.opname.active, .nav-pills .show > .nav-link.opname {
+    color: #fff;
+    background-color: #e6942ade;
+}
