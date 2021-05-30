@@ -56,7 +56,7 @@
                 <div class="col-md-3">
                     <button type="submit" class="btn btn-primary col-6 offset-3">Submit</button>
                     <a class="btn btn-light col-6 offset-3" id="btnResetOpname">Reset</a>
-                    <a class="btn btn-info col-6 offset-3" data-toggle="modal" data-target="#addCategory">Add Category</a>
+                    <a class="btn btn-light col-6 offset-3" data-toggle="modal" data-target="#addCategory">Add Category</a>
                 </div>
             </form>
         </div>

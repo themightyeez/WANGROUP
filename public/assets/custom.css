@@ -115,8 +115,25 @@
 }
 
 .btn-custom-submit {
+    background-color: #f2b260de;
+    color: #fff;
+}
+
+.btn-custom-submit:hover {
     background-color: #e6942ade;
     color: #fff;
+}
+
+.btn-edit-monitoring {
+    background-color: #A1BAE3;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.btn-edit-monitoring:hover {
+    background-color: #3b69b3;
+    color: #fff;
+    transition: 0.3s;
 }
 
 .nav-pills .nav-link.request.active, .nav-pills .show > .nav-link.request {
@@ -132,4 +149,64 @@
 .nav-pills .nav-link.opname.active, .nav-pills .show > .nav-link.opname {
     color: #fff;
     background-color: #e6942ade;
+}
+
+.table .thead-dark th{
+    color: #fff;
+    background-color: #69727b;
+    border-color: #69727b;
+}
+
+.btn-export:hover {
+    color: #fff;
+    background-color: #69727b;
+    border-color: #69727b;
+}
+
+.btn-export {
+    color: #fff;
+    background-color: #98999b;
+    border-color: #98999b;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #4d6e92;
+    border-color: #4d6e92;
+}
+
+.btn-edit-supplier {
+    cursor: pointer;
+    color: #000000;
+}
+
+.btn-edit-supplier:hover {
+    cursor: pointer;
+    color: #2e5ac7;
+    text-decoration: none;
+}
+
+.nav-pills .nav-link.account-setting.active, .nav-pills .show > .nav-link.opname {
+    color: #fff;
+    background-color: #4d6e92;
+}
+
+table > thead > tr > th {
+    color: #fff;
+    background-color: #69727b;
+    border-color: #69727b;
+}
+
+.dataTables_length {
+    margin-left: 1rem;
+    float: left;
+}
+
+.dataTables_filter {
+    float: right;
+    text-align: right;
+}
+
+.input-text {
+    font-size: 80%;
 }

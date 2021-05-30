@@ -26,7 +26,7 @@
                             <td>Mang KP Racing</td>
                             <td>55</td>
                             <td>
-                                <a href="" class="btn btn-dark"><i class="fas fa-file-download"></i></a>
+                                <a href="" class="btn btn-export"><i class="fas fa-file-download"></i></a>
                             </td>
                         </tr>
                     </tbody>

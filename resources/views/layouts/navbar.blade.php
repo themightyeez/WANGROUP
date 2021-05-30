@@ -13,15 +13,15 @@
                         <a class="nav-link rounded-pill px-md-4" href="{{ action('WebController@dashboard') }}">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link rounded-pill px-md-4" href="{{ action('MonitoringController@index') }}">Monitoring</a>
+                        <a class="nav-link rounded-pill px-md-4" href="{{ action('MonitoringController@browse') }}">Monitoring</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link rounded-pill px-md-4" href="{{ action('WebController@supplier') }}">Supplier</a>
+                        <a class="nav-link rounded-pill px-md-4" href="{{ action('SupplierController@browse') }}">Supplier</a>
                     </li>
                 </ul>
                 <div class="d-flex d-lg-none float-right">
                     <a class="btn btn-account btn-account-kanan" href="{{ action('WebController@account') }}"><i class="fas fa-user-circle"></i> Account</a>
-                    <a class="btn btn-danger rounded-lg ml-2" href="#"><i class="fas fa-sign-out-alt"></i></a>
+                    <a class="btn btn-danger rounded-lg ml-2" href="{{ action('AuthController@logout') }}"><i class="fas fa-sign-out-alt"></i></a>
                 </div>
                 <div class="dropdown d-none d-lg-block">
                     <button class="btn btn-account btn-account-kanan dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -29,7 +29,7 @@
                     </button>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="{{ action('WebController@account') }}">Account</a>
-                        <a class="dropdown-item text-danger" href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        <a class="dropdown-item text-danger" href="{{ action('AuthController@logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a>
                     </div>
                 </div>
             </div>

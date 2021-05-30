@@ -3,16 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Course;
+use Illuminate\Support\Facades\Hash;
+use App\User;
+use App\Router;
+use Auth;
+use Alert;
 
 class WebController extends Controller
 {
-    public function index(){
-        return view('login');
-    }
-
     public function dashboard() {
-        return view('dashboard');
+        $devices = Router::all();
+        return view('dashboard', compact('devices'));
     }
 
     public function incoming() {
@@ -35,10 +36,33 @@ class WebController extends Controller
         return view('account');
     }
     
-    public function supplier(){
-        return view('supplier');
+    public function changeName(Request $req){
+        $user = Auth::user();
+        $user = User::find($user->id);
+        $user->name = $req->get('name');
+        $user->save();
+
+        return redirect()->action('WebController@account')->with('toast_success', 'Display Name Changed!');
     }
 
+    public function changePassword(Request $req){
+        $user = Auth::user();
+        $user = User::find($user->id);
+
+        $currentPass = $user->password;
+        $inputPass = $req->get('oldPassword');
+        $newPass = $req->get('newPassword');
+
+        $check = Hash::check($inputPass, $currentPass);
+
+        if ($check) {
+            $user->password = Hash::make($newPass);
+            $user->save();
+            return redirect()->action('WebController@account')->with('toast_success','Password Changed!');
+        }
+
+        return redirect()->action('WebController@account')->with('toast_error','Password Mismatch!');
+    }
 
     
 }

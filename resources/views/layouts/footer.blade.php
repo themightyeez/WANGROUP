@@ -67,11 +67,11 @@
                     </a>
                 </div>
                 <nav class="mx-auto d-flex flex-wrap align-items-center justify-content-center">
-                    <a href="" class="footer-link" style="text-decoration: none"> - </a>
+                    <a class="footer-link" style="text-decoration: none"> - </a>
                     <span>|</span>
-                    <a href="" class="footer-link" style="text-decoration: none">&nbsp;WAN Group&nbsp;</a>
+                    <a href="#" class="footer-link" style="text-decoration: none">&nbsp;WAN Group&nbsp;</a>
                     <span>|</span>
-                    <a href="" class="footer-link" style="text-decoration: none"> - </a>
+                    <a class="footer-link" style="text-decoration: none"> - </a>
                 </nav>
                 <nav class="d-flex flex-lg-row flex-column align-items-center justify-content-center py-3">
                     <p style="margin: 0">Copyright © 2021 Kelompok 1</p>

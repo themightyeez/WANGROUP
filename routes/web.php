@@ -11,15 +11,37 @@
 |
 */
 
-Route::get('/','WebController@index');
-Route::get('/dashboard','WebController@dashboard');
-Route::get('/incoming','WebController@incoming');
-Route::get('/inventory','WebController@inventory');
-Route::get('/transaction','WebController@transactions');
-Route::get('/report','WebController@reports');
-Route::get('/account','WebController@account');
+Route::get('/', function(){
+    return redirect('/dashboard');
+});
 
-Route::get('/monitoring', 'MonitoringController@index');
+Route::get('/login','AuthController@login')->name('login');
+Route::post('/login','AuthController@postLogin');
+Route::get('/logout','AuthController@logout');
 
-Route::get('/supplier', 'WebController@supplier');
+
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/dashboard','WebController@dashboard');
+    
+    Route::get('/incoming','WebController@incoming');
+    Route::get('/inventory','WebController@inventory');
+    Route::get('/transaction','WebController@transactions');
+    Route::get('/report','WebController@reports');
+    
+    Route::get('/account','WebController@account');
+    Route::post('/account/changeName','WebController@changeName');
+    Route::post('/account/changePassword','WebController@changePassword');
+    
+
+    Route::get('/monitoring', 'MonitoringController@browse');
+    Route::post('/monitoring/edit', 'MonitoringController@edit');
+    Route::post('/monitoring/checklatency', 'MonitoringController@pingExec');
+    
+    Route::get('/supplier', 'SupplierController@browse');
+    Route::post('/supplier/add', 'SupplierController@store');
+    Route::post('/supplier/edit', 'SupplierController@edit');
+    Route::get('/supplier/{id}/remove', 'SupplierController@remove');
+
+
+});    
 

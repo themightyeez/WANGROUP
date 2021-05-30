@@ -4,7 +4,7 @@
 @section('content')
 <div class="pl-3 py-3">
     <h4>
-        Hello Admin
+        Hello {{ Auth()->user()->name }}
     </h4>
     <hr>
 </div>
@@ -14,7 +14,7 @@
             <div class="row no-gutters">
                 <div class="col-md-4 py-4 bg-card">
                     <div class="px-5">
-                        <i class="fas fa-5x fa-luggage-cart text-white"></i>
+                        <i class="fas fa-5x fa-download text-white"></i>
                     </div>
                 </div>
                 <div class="col-md-8">
@@ -52,7 +52,7 @@
             <div class="row no-gutters">
                 <div class="col-md-4 py-4 bg-card">
                     <div class="px-5">
-                        <i class="fas fa-5x fa-file-invoice-dollar text-white"></i>
+                    <i class="fas fa-5x fa-shopping-cart text-white"></i>    
                     </div>
                 </div>
                 <div class="col-md-8">
@@ -100,7 +100,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin="anonymous"></script>
 
 <script>
-    var map = L.map('location').setView([-6.1858284,106.836],13);
+    var map = L.map('location').setView([-6.2058284,106.836],11);
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> | Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
         maxZoom: 18,
@@ -109,6 +109,47 @@
         zoomOffset: -1,
         accessToken: 'pk.eyJ1Ijoia3Jpc25heXVkYSIsImEiOiJja285Z2Y2bDAwNGNnMnVtbjJzZGU4NXg4In0.67nZNG6fc8Vs0NMjikglwA'
     }).addTo(map);
-    var headoffice = L.marker([-6.1858284,106.836]).addTo(map);
+    
+    var headofficepin = L.icon({
+        iconUrl: '{{ asset('assets/marker/noc-marker.png') }}',
+        iconSize: [75, 75],
+        iconAnchor: [18, 18],
+        popupAnchor: [-3, -20],
+    });
+
+    var status_reply = L.icon({
+        iconUrl: '{{ asset('assets/marker/status-ok.png') }}',
+        iconSize: [50, 50],
+        iconAnchor: [18, 18],
+        popupAnchor: [-3, -20],
+    });
+
+    var status_timeout = L.icon({
+        iconUrl: '{{ asset('assets/marker/status-timeout.png') }}',
+        iconSize: [50, 50],
+        iconAnchor: [18, 18],
+        popupAnchor: [-3, -20],
+    });
+
+    var headoffice = L.marker([-6.1858284,106.8363342], {icon:headofficepin}).bindPopup("<strong>WAM GROUP Office</strong>").addTo(map);
+
+    @foreach ($devices as $device)
+        @php 
+            $location = explode("," , $device->location);
+            $lat = $location[0];
+            $lon = $location[1];
+        @endphp
+
+        @switch($device->status)
+            @case('timeout')
+                L.marker([{{$lat}} , {{$lon}}], {icon:status_timeout}).bindPopup("<strong>{{$device->identity}}</strong>").addTo(map);
+            @break
+
+            @default
+                L.marker([{{$lat}} , {{$lon}}], {icon:status_reply}).bindPopup("<strong>{{$device->identity}}</strong>").addTo(map);
+            @break
+        @endswitch
+        
+    @endforeach
 </script>
 @endsection
