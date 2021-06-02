@@ -32,6 +32,12 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/account/changeName','WebController@changeName');
     Route::post('/account/changePassword','WebController@changePassword');
     
+    Route::post('/product', 'ProductController@addProduct');
+    Route::post('/product/edit', 'ProductController@editProduct');
+
+    Route::post('/category', 'ProductController@addCategory');
+    Route::post('/category/qry', 'ProductController@queryCategory');
+    Route::post('/category/remove', 'ProductController@removeCategory');
 
     Route::get('/monitoring', 'MonitoringController@browse');
     Route::post('/monitoring/edit', 'MonitoringController@edit');
@@ -41,6 +47,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/supplier/add', 'SupplierController@store');
     Route::post('/supplier/edit', 'SupplierController@edit');
     Route::get('/supplier/{id}/remove', 'SupplierController@remove');
+    
 
 
 });    

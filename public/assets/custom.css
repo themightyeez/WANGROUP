@@ -175,12 +175,12 @@
     border-color: #4d6e92;
 }
 
-.btn-edit-supplier {
+.btn-edit-custom{
     cursor: pointer;
     color: #000000;
 }
 
-.btn-edit-supplier:hover {
+.btn-edit-custom:hover {
     cursor: pointer;
     color: #2e5ac7;
     text-decoration: none;

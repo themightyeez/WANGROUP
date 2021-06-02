@@ -37,6 +37,8 @@
 @endsection
 
 @section('additionalScript')
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 <script>
     $(document).ready(function(){
         let row_number = 0;
@@ -145,7 +147,35 @@
             $('#itemName').val('');
             $('#qty').val('');
             $('#category').val('');
+            $('#category').val('');
+            $('#photo').val('');
         });
     });
 </script>
+
+<script>
+    $(document).ready(function(){
+        $('#removeCategory').on('show.bs.modal', function(e){
+            category = $('#qryCategory');
+            $.ajax({
+                url: "{{ action('ProductController@queryCategory') }}",
+                type: "post", 
+                data: {
+                    _token: '{!! csrf_token() !!}',
+                },
+                success: function(response) {
+                    category.empty();
+                    $.each(response['data'],function(key,value){
+                        category.append('<option value='+value['id']+'>'+value['name']+'</option>');
+                    });
+                },
+                error: function(){
+
+                }
+            });
+        });
+    });
+</script>
+
+
 @endsection

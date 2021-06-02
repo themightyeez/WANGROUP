@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\Router;
+use App\Category;
+use App\Product;
 use Auth;
 use Alert;
 
@@ -21,11 +23,15 @@ class WebController extends Controller
     }
 
     public function inventory() {
-        return view('inventory');
+        $products = Product::all();
+        return view('inventory', compact('products'));
     }
 
     public function transactions() {
-        return view('transactions');
+        $opnameCategory = Category::select('id','name')->get();
+
+
+        return view('transactions', compact('opnameCategory'));
     }
 
     public function reports() {
