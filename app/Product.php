@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     protected $table = 'products';
-    //belongsTo {{Model Sebelah}} {{foreignkey}} {{primarykey Model sebelah}}
+    //belongsTo {{Model Sebelah}} {{foreignkey_kita}} {{primarykey Model sebelah}}
     
     public function getPhoto(){
         if(!$this->photo){
@@ -20,4 +20,9 @@ class Product extends Model
     public function category(){
         return $this->belongsTo('App\Category', 'category_id', 'id');
     }
+
+    public function transaction()
+	{
+		return $this->belongsToMany('App\Transaction','transaction_product','product_id','transaction_id')->withPivot('qty', 'note');
+	}
 }

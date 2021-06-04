@@ -84,7 +84,7 @@
                         <a class=\"btn-edit-custom\" onclick=\"readMore({{$product->id}})\">Read More</a>\
                     </p>\
                     <p id=\"notes-full-{{$product->id}}\" class=\"d-none text-break\"> {{ $product->note }}\
-                        <a class=\"btn-edit-custom\" onclick=\"readLess({{$product->id}})\">Read Less</a>\
+                        <a class=\"btn-edit-custom\" onclick=\"readLess({{$product->id}})\">...Read Less</a>\
                     </p>\
                     </div>",
                     @else

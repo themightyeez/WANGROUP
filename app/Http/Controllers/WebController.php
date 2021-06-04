@@ -8,6 +8,7 @@ use App\User;
 use App\Router;
 use App\Category;
 use App\Product;
+use App\Transaction;
 use Auth;
 use Alert;
 
@@ -29,13 +30,15 @@ class WebController extends Controller
 
     public function transactions() {
         $opnameCategory = Category::select('id','name')->get();
+        $stockItems = Product::select('id','name')->get();
 
-
-        return view('transactions', compact('opnameCategory'));
+        return view('transactions', compact('opnameCategory','stockItems'));
     }
 
     public function reports() {
-        return view('reports');
+        $transactions = Transaction::select('id','transaction_id', 'transaction_type', 'contact', 'created_at')->where('status','2')->with('product')->get();
+
+        return view('reports', compact('transactions'));
     }
 
     public function account(){

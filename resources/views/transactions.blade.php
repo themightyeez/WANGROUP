@@ -48,10 +48,15 @@
             $('#requestedItems').append('\
                 <div class="form-group row" id="items'+new_row_number+'">\
                     <div class="col-md-5">\
-                        <input type="text" class="form-control" name="item['+new_row_number+'][item]">\
+                        <select class=\"form-control\" name=\"item['+new_row_number+'][item]\" style=\"width: 100%\" required=\"required\">\
+                            <option value=\"\"></option>\
+                            @foreach($stockItems as $item)\
+                            <option value=\"{{ $item->id }}\"> {{ $item->name }}</option>\
+                            @endforeach\
+                        </select>\
                     </div>\
                     <div class="col-md-2">\
-                        <input type="text" class="form-control" name="item['+new_row_number+'][qty]">\
+                        <input type="text" class="form-control" name="item['+new_row_number+'][qty]" required>\
                     </div>\
                     <div class="col-md-5">\
                         <input type="text" class="form-control" name="item['+new_row_number+'][note]">\
@@ -64,19 +69,27 @@
         $("#btnDelRequest").click(function(e){
             e.preventDefault();
             $('#items'+row_number).remove();
-            row_number--;
+            if(row_number > 0){
+                row_number--;
+            }
         });
 
         $('#btnResetRequest').click(function(e){
             var new_row_number = 0;
             $('#requestor').val('');
             $('#requestedItems').html('\
+            {{ csrf_field() }}\
             <div class="form-group row" id="items'+new_row_number+'">\
                     <div class="col-md-5">\
-                        <input type="text" class="form-control" name="item['+new_row_number+'][item]">\
+                        <select class=\"form-control\" name=\"item['+new_row_number+'][item]\" style=\"width: 100%\" required=\"required\">\
+                            <option value=\"\"></option>\
+                            @foreach($stockItems as $item)\
+                            <option value=\"{{ $item->id }}\"> {{ $item->name }}</option>\
+                            @endforeach\
+                        </select>\
                     </div>\
                     <div class="col-md-2">\
-                        <input type="text" class="form-control" name="item['+new_row_number+'][qty]">\
+                        <input type="text" class="form-control" name="item['+new_row_number+'][qty]" required>\
                     </div>\
                     <div class="col-md-5">\
                         <input type="text" class="form-control" name="item['+new_row_number+'][note]">\
@@ -98,10 +111,15 @@
             $('#returnedItems').append('\
                 <div class="form-group row" id="items'+new_row_number+'">\
                     <div class="col-md-5">\
-                        <input type="text" class="form-control" name="item['+new_row_number+'][item]">\
+                        <select class=\"form-control\" name=\"item['+new_row_number+'][item]\" style=\"width: 100%\" required=\"required\">\
+                            <option value=\"\"></option>\
+                            @foreach($stockItems as $item)\
+                            <option value=\"{{ $item->id }}\"> {{ $item->name }}</option>\
+                            @endforeach\
+                        </select>\
                     </div>\
                     <div class="col-md-2">\
-                        <input type="text" class="form-control" name="item['+new_row_number+'][qty]">\
+                        <input type="text" class="form-control" name="item['+new_row_number+'][qty]" required>\
                     </div>\
                     <div class="col-md-5">\
                         <input type="text" class="form-control" name="item['+new_row_number+'][note]">\
@@ -114,19 +132,27 @@
         $("#btnDelReturn").click(function(e){
             e.preventDefault();
             $('#items'+row_number).remove();
-            row_number--;
+            if(row_number > 0){
+                row_number--;
+            }
         });
 
         $('#btnResetReturn').click(function(e){
             var new_row_number = 0;
             $('#returnee').val('');
             $('#returnedItems').html('\
+            {{ csrf_field() }}\
             <div class="form-group row" id="items'+new_row_number+'">\
                     <div class="col-md-5">\
-                        <input type="text" class="form-control" name="item['+new_row_number+'][item]">\
+                        <select class=\"form-control\" name=\"item['+new_row_number+'][item]\" style=\"width: 100%\" required=\"required\">\
+                            <option value=\"\"></option>\
+                            @foreach($stockItems as $item)\
+                            <option value=\"{{ $item->id }}\"> {{ $item->name }}</option>\
+                            @endforeach\
+                        </select>\
                     </div>\
                     <div class="col-md-2">\
-                        <input type="text" class="form-control" name="item['+new_row_number+'][qty]">\
+                        <input type="text" class="form-control" name="item['+new_row_number+'][qty]" required>\
                     </div>\
                     <div class="col-md-5">\
                         <input type="text" class="form-control" name="item['+new_row_number+'][note]">\

@@ -200,17 +200,11 @@
             [
                 "{{ $device->id }}",
                 "<div class=\"row\"><div class=\"col-12\"><img src=\"/assets/router/{{$device->router_type}}.png\" style=\"max-width: 50%\"></div><div class=\"col-12\">{{ $device->identity }}</div></div>",
-                @if($device->status == 'timeout')
-                    "<span class=\"badge badge-danger\"> Timeout </span>",
-                    "<a class=\"btn btn-light rounded-pill\" id=\"changeView-{{$device->id}}\" data-lat=\"{{ $lat }}\" data-lon=\"{{ $lon }}\" onclick=\"changeView({{$device->id}})\"><i class=\"fas fa-map-marker-alt pr-1 py-1\"></i> Locate Me!</a>",
-                    "<a class=\"btn btn-success rounded-pill disabled\" data-toggle=\"modal\" data-target=\"#checkDevice\"><i class=\"fas fa-lg fa-fingerprint pr-1 py-1\"></i>Check</a>\
-                    <a class=\"btn btn-edit-monitoring rounded-pill\" data-toggle=\"modal\" data-target=\"#editDevice\" data-id=\"{{ $device->id }}\" data-identity=\"{{ $device->identity }}\" data-location=\"{{ $device->location }}\"><i class=\"fas fa-edit px-1 py-1\"></i></a>"
-                @else
-                    "{{ $device->status }}ms",
-                    "<a class=\"btn btn-light rounded-pill\" id=\"changeView-{{$device->id}}\" data-lat=\"{{ $lat }}\" data-lon=\"{{ $lon }}\" onclick=\"changeView({{$device->id}})\"><i class=\"fas fa-map-marker-alt pr-1 py-1\"></i> Locate Me!</a>",
-                    "<a class=\"btn btn-success rounded-pill mb-1\" data-toggle=\"modal\" data-target=\"#checkDevice\" data-id=\"{{ $device->id }}\" data-identity=\"{{ $device->identity }}\" data-graph-id=\"{{ $device->graph_id }}\"><i class=\"fas fa-lg fa-fingerprint pr-1 py-1\"></i>Check</a>\
-                    <a class=\"btn btn-edit-monitoring rounded-pill\" data-toggle=\"modal\" data-target=\"#editDevice\" data-id=\"{{ $device->id }}\" data-identity=\"{{ $device->identity }}\" data-location=\"{{ $device->location }}\"><i class=\"fas fa-edit px-1 py-1\"></i></a>"
-                @endif
+                "<span class=\"{{ $device->status == 'timeout' ? 'badge badge-danger' : '' }}\"> {{ $device->status == 'timeout' ? 'Timeout' : $device->status.' ms' }}</span> ",
+                "<a class=\"btn btn-light rounded-pill\" id=\"changeView-{{$device->id}}\" data-lat=\"{{ $lat }}\" data-lon=\"{{ $lon }}\" onclick=\"changeView({{$device->id}})\"><i class=\"fas fa-map-marker-alt pr-1 py-1\"></i> Locate Me!</a>",
+                "<a class=\"btn btn-success rounded-pill mb-1 {{ $device->status == 'timeout' ? 'disabled' : '' }}\" data-toggle=\"modal\" data-target=\"#checkDevice\" data-identity=\"{{ $device->identity }}\" data-id=\"{{ $device->id }}\" data-graph-id=\"{{  $device->graph_id }}\"><i class=\"fas fa-lg fa-fingerprint pr-1 py-1\"></i>Check</a>\
+                <a class=\"btn btn-edit-monitoring rounded-pill\" data-toggle=\"modal\" data-target=\"#editDevice\" data-id=\"{{ $device->id }}\" data-identity=\"{{ $device->identity }}\" data-location=\"{{ $device->location }}\"><i class=\"fas fa-edit px-1 py-1\"></i></a>"
+                
             ],
             @endforeach
         ];
@@ -262,7 +256,7 @@
                 },
                 success: function(response) {
                     $('#spinner').hide();
-                    $('#deviceLatency').html(response['result']+'ms');
+                    $('#deviceLatency').html(response['result']+' ms');
                     $('#deviceLatency').show();
                 },
                 error: function(){

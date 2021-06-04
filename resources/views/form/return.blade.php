@@ -1,11 +1,11 @@
 <div class="container-fluid">
-    <form>
+    <form action="{{ action('TransactionController@returnTransaction') }}" method="POST">
         <div class="row">
             <div class="col-md-9">
                 <div class="form-group row">
                     <label for="returnee" class="col-md-4 col-form-label">Returned By</label>
                     <div class="col-md-4">
-                        <input type="text" class="form-control" id="returnee">
+                        <input type="text" class="form-control" id="returnee" name="returnee">
                     </div>
                 </div>
                 <hr>
@@ -15,9 +15,15 @@
                     <label class="col-form-label col-md-5">Notes</label>
                 </div>
                 <div id="returnedItems">
+                    {{ csrf_field() }}
                     <div class="form-group row" id="items0">
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="item[0][item]">
+                            <select class="form-control" name="item[0][item]" style="width: 100%" required="required">
+                                <option value=""></option>
+                                @foreach($stockItems as $item)
+                                <option value="{{ $item->id }}"> {{ $item->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="col-md-2">
                             <input type="text" class="form-control" name="item[0][qty]">

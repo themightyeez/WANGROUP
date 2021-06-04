@@ -39,6 +39,9 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/category/qry', 'ProductController@queryCategory');
     Route::post('/category/remove', 'ProductController@removeCategory');
 
+    Route::post('/trx/request', 'TransactionController@requestTransaction');
+    Route::post('/trx/return', 'TransactionController@returnTransaction');
+
     Route::get('/monitoring', 'MonitoringController@browse');
     Route::post('/monitoring/edit', 'MonitoringController@edit');
     Route::post('/monitoring/checklatency', 'MonitoringController@pingExec');

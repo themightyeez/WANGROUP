@@ -1,11 +1,11 @@
 <div class="container-fluid">
-    <form>
+    <form action="{{ action('TransactionController@requestTransaction') }}" method="POST">
         <div class="row">
             <div class="col-md-9">
                 <div class="form-group row">
                     <label for="requestor" class="col-md-4 col-form-label">Requested By</label>
                     <div class="col-md-4">
-                        <input type="text" class="form-control" id="requestor">
+                        <input type="text" class="form-control" id="requestor" name="requestor">
                     </div>
                 </div>
                 <hr>
@@ -15,12 +15,18 @@
                     <label class="col-form-label col-md-5">Notes</label>
                 </div>
                 <div id="requestedItems">
+                    {{ csrf_field() }}
                     <div class="form-group row" id="items0">
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="item[0][item]">
+                            <select class="form-control" name="item[0][item]" style="width: 100%" required="required">
+                                <option value=""></option>
+                                @foreach($stockItems as $item)
+                                <option value="{{ $item->id }}"> {{ $item->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="col-md-2">
-                            <input type="text" class="form-control" name="item[0][qty]">
+                            <input type="text" class="form-control" name="item[0][qty]" required>
                         </div>
                         <div class="col-md-5">
                             <input type="text" class="form-control" name="item[0][note]">

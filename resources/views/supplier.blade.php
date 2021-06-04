@@ -140,7 +140,7 @@
                 @endphp
             [
                 "{{ $supplier->id }}",
-                "<a class=\"btn-edit-custom\" data-toggle=\"modal\" data-target=\"#editSupplier\" data-id=\"{{$supplier->id}}\" data-name=\"{{$supplier->name}}\" data-phonenumber=\"{{$supplier->phone_number}}\" data-address=\"{{$supplier->address}}\"> {{ $supplier->name}} </a>",
+                "<a class=\"btn-edit-custom\" data-toggle=\"modal\" data-target=\"#editSupplier\" data-id=\"{{$supplier->id}}\" data-name=\"{{$supplier->name}}\" data-phonenumber=\"{{$supplier->phone_number}}\" data-address=\"{{$supplier->address}}\"> <span data-toggle=\"tooltip\" title=\"Edit\" data-placement=\"right\"> {{ $supplier->name}} </span>  </a>",
                 "{{ $supplier->phone_number }}",
                 "{{ $supplier->address }}",
                 "<a href=\"https:\/\/wa.me\/{{$wa}}\" class=\"btn btn-success rounded-pill mb-1\"><i class=\"fab fa-lg fa-whatsapp\"></i></a>\
