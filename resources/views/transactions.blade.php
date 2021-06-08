@@ -49,9 +49,8 @@
                 <div class="form-group row" id="items'+new_row_number+'">\
                     <div class="col-md-5">\
                         <select class=\"form-control\" name=\"item['+new_row_number+'][item]\" style=\"width: 100%\" required=\"required\">\
-                            <option value=\"\"></option>\
                             @foreach($stockItems as $item)\
-                            <option value=\"{{ $item->id }}\"> {{ $item->name }}</option>\
+                                <option value="{{ $item->id }}" {{ $item->qty == 0 ? 'disabled' : '' }}> {{ $item->name }}</option>\
                             @endforeach\
                         </select>\
                     </div>\
@@ -84,7 +83,7 @@
                         <select class=\"form-control\" name=\"item['+new_row_number+'][item]\" style=\"width: 100%\" required=\"required\">\
                             <option value=\"\"></option>\
                             @foreach($stockItems as $item)\
-                            <option value=\"{{ $item->id }}\"> {{ $item->name }}</option>\
+                                <option value="{{ $item->id }}" {{ $item->qty == 0 ? 'disabled' : '' }}> {{ $item->name }}</option>\
                             @endforeach\
                         </select>\
                     </div>\

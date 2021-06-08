@@ -30,7 +30,7 @@ class WebController extends Controller
 
     public function transactions() {
         $opnameCategory = Category::select('id','name')->get();
-        $stockItems = Product::select('id','name')->get();
+        $stockItems = Product::select('id','name', 'qty')->get();
 
         return view('transactions', compact('opnameCategory','stockItems'));
     }

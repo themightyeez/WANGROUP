@@ -131,7 +131,7 @@
         popupAnchor: [-3, -20],
     });
 
-    var headoffice = L.marker([-6.1858284,106.8363342], {icon:headofficepin}).bindPopup("<strong>WAM GROUP Office</strong>").addTo(map);
+    var headoffice = L.marker([-6.1858284,106.8363342], {icon:headofficepin}).bindPopup("<strong>WAN GROUP Office</strong>").addTo(map);
 
     @foreach ($devices as $device)
         @php 

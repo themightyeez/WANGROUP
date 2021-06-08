@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Transaction;
 use Log;
+use DB;
 use DateTime;
 
 class TransactionController extends Controller
@@ -24,34 +25,51 @@ class TransactionController extends Controller
         if (!$validate) {
             return redirect()->action('WebController@transactions');
         }
+        
+        //Check stock
+        foreach($req->get('item') as $k => $v){
+            $product = Product::findOrFail($v['item']);
+            $error = [];
+            if ($v['qty'] > $product->qty) {
+                $error[] = $product->name.' insufficient stock';
+            }
+        }
 
         $date = new DateTime;
         $date = $date->format('Y-m-d');
         $id = 'WG/Req/'.$date.'/'.rand(10,100);
 
+        
+        if(boolval($error)){
+            $msg = '';
+            foreach ($error as $k => $v) {
+                $msg .=  $v.PHP_EOL;
+            }
+
+            return redirect()->action('WebController@transactions')->with('toast_warning', $msg);
+        } 
+        
         $transaction = new Transaction();
         $transaction->transaction_id = $id;
         $transaction->status = 2;
         $transaction->transaction_type = 'request';
         $transaction->contact = $req->get('requestor');
         $transaction->save();
-
+        
         foreach($req->get('item') as $k => $v){
             $product = Product::findOrFail($v['item']);
             $product->qty = $product->qty - $v['qty'];
             $product->save();
-
             $transaction = Transaction::where('transaction_id',$id)->firstOrFail();
             $product->transaction()->attach($transaction->id, ['qty' => $v['qty'], 'note' => $v['note'] ]);
         }
-
 
         return redirect()->action('WebController@transactions')->with('toast_success', 'Request Booked!');
     }
 
     public function returnTransaction(Request $req){
         $validate = $req->validate([
-            'item.*.qty' => 'required|integer',
+            'item.*.qty' => 'required|integer|gt:0',
             'returnee' => 'required'
         ],
         [
@@ -86,6 +104,28 @@ class TransactionController extends Controller
 
 
         return redirect()->action('WebController@transactions')->with('toast_success', 'Return Processed!');
+    }
+
+    public function searchReport(Request $req){
+        $validate = $req->validate([
+            'start' => 'required|integer',
+            'end' => 'required|integer'
+        ],
+        [
+            'start.integer' => 'Please input valid timestamp',
+            'end.integer' => 'Please input valid timestamp'
+        ]
+        );
+
+        if (!$validate) {
+            return redirect()->action('WebController@reports');
+        }
+        $start = date('Y-m-d', substr($req->get('start'), 0,-3));
+        $end = date('Y-m-d', substr($req->get('end'), 0,-3));
+        
+        $transactions = Transaction::where('created_at','>=', $start)->where('created_at','<=', $end.' 23:59:59')->where('status','2')->with('product')->get();
+
+        return view('queryreport', compact('transactions'));
     }
 
 }

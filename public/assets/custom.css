@@ -169,6 +169,18 @@
     border-color: #98999b;
 }
 
+.btn-search {
+    color: #fff;
+    background-color: #A1BAE3;
+    border-color: #A1BAE3;
+}
+
+.btn-search:hover {
+    color: #fff;
+    background-color: #5389e1;
+    border-color: #5389e1;
+}
+
 .btn-primary {
     color: #fff;
     background-color: #4d6e92;

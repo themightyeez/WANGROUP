@@ -41,6 +41,7 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::post('/trx/request', 'TransactionController@requestTransaction');
     Route::post('/trx/return', 'TransactionController@returnTransaction');
+    Route::get('/trx/query', 'TransactionController@searchReport');
 
     Route::get('/monitoring', 'MonitoringController@browse');
     Route::post('/monitoring/edit', 'MonitoringController@edit');

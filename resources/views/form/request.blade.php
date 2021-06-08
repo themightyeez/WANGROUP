@@ -21,7 +21,7 @@
                             <select class="form-control" name="item[0][item]" style="width: 100%" required="required">
                                 <option value=""></option>
                                 @foreach($stockItems as $item)
-                                <option value="{{ $item->id }}"> {{ $item->name }}</option>
+                                <option value="{{ $item->id }}" {{ $item->qty == 0 ? 'disabled' : '' }}> {{ $item->name }}</option>
                                 @endforeach
                             </select>
                         </div>
