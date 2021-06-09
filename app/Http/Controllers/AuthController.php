@@ -13,7 +13,19 @@ class AuthController extends Controller
 
     public function postLogin(Request $req){
         if (Auth::attempt($req->only('email','password'))) {
-            return redirect( action('WebController@dashboard') );
+            $user = Auth::user();
+            switch ($user) {
+                case ($user->hasRole('admin')):
+                    return redirect( action('WebController@dashboard') );
+                    break;
+                
+                case ($user->hasRole('user')):
+                    return redirect( action('UserController@dashboard') );
+                    break;
+                
+                default:
+                    break;
+            }
         }
 
         return redirect()->action('AuthController@login')->with('toast_error','Username or Password Mismatch!');

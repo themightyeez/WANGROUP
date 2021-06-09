@@ -19,7 +19,14 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+    // // use AuthenticatesUsers;
+    // public function authenticated(Request $request, $user){
+    //     if ($user->hasRole('admin')) {
+    //         return redirect()->action('WebController@dashboard');
+    //     }
+
+    //     return redirect()->action('UserController@dashboard');
+    // }
 
     /**
      * Where to redirect users after login.

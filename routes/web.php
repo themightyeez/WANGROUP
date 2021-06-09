@@ -12,7 +12,23 @@
 */
 
 Route::get('/', function(){
-    return redirect('/dashboard');
+    $user = Auth::user();
+    if (!$user) {
+        return redirect()->action('AuthController@login');
+    }
+
+    switch ($user) {
+        case ($user->hasRole('admin')):
+            return redirect( action('WebController@dashboard') );
+            break;
+        
+        case ($user->hasRole('user')):
+            return redirect( action('UserController@dashboard') );
+            break;
+        
+        default:
+            break;
+    }
 });
 
 Route::get('/login','AuthController@login')->name('login');
@@ -20,7 +36,7 @@ Route::post('/login','AuthController@postLogin');
 Route::get('/logout','AuthController@logout');
 
 
-Route::group(['middleware' => 'auth'], function(){
+Route::group(['middleware' => 'role:admin'], function(){
     Route::get('/dashboard','WebController@dashboard');
     
     Route::get('/incoming','WebController@incoming');
@@ -53,6 +69,15 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/supplier/{id}/remove', 'SupplierController@remove');
     
 
-
 });    
 
+Route::group(['middleware' => 'role:user'], function(){
+    Route::get('/user/dashboard','UserController@dashboard');
+
+    // Route::get('/request' , 'UserController@request');
+    // Route::get('/availableitems' , 'UserController@inventory');
+
+    // Route::get('/user/account','UserController@account');
+    // Route::post('/user/account/changeName','UserController@changeName');
+    // Route::post('/user/account/changePassword','UserController@changePassword');
+});
