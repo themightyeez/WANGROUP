@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Transaction;
 use Log;
+use Auth;
 use DB;
 use DateTime;
 
@@ -54,6 +55,7 @@ class TransactionController extends Controller
         $transaction->status = 2;
         $transaction->transaction_type = 'request';
         $transaction->contact = $req->get('requestor');
+        $transaction->processed_by = Auth::user()->id;
         $transaction->save();
         
         foreach($req->get('item') as $k => $v){
@@ -91,6 +93,7 @@ class TransactionController extends Controller
         $transaction->status = 2;
         $transaction->transaction_type = 'return';
         $transaction->contact = $req->get('returnee');
+        $transaction->processed_by = Auth::user()->id;
         $transaction->save();
 
         foreach($req->get('item') as $k => $v){
@@ -128,4 +131,40 @@ class TransactionController extends Controller
         return view('queryreport', compact('transactions'));
     }
 
+    public function approval(Request $req){
+        $validate = $req->validate([
+            'id' => 'required|integer',
+            'qry' => 'required|between:0,1'
+        ],
+        [
+            'id.integer' => 'Invalid Request!',
+            'qry.between' => 'Unable to process request'
+        ]
+        );
+
+        if (!$validate) {
+            return redirect()->action('WebController@incoming');
+        }
+
+        $transaction = Transaction::find($req->get('id'));
+
+        if (!$transaction) {
+            return redirect()->action('WebController@incoming')->with('toast_warning', 'Transaction not found.');
+        }
+
+        switch ($req->get('qry')) {
+            case 1:
+                $transaction->status = 2;
+                $transaction->approved_by = Auth::user()->id;
+                $transaction->save();
+                return redirect()->action('WebController@incoming')->with('toast_success', 'Transaction approved.');
+                break;
+            
+            default:
+                $transaction->status = 3;
+                $transaction->save();
+                return redirect()->action('WebController@incoming')->with('toast_success', 'Transaction rejected.');
+                break;
+        }
+    }
 }

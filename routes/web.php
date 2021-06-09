@@ -58,6 +58,7 @@ Route::group(['middleware' => 'role:admin'], function(){
     Route::post('/trx/request', 'TransactionController@requestTransaction');
     Route::post('/trx/return', 'TransactionController@returnTransaction');
     Route::get('/trx/query', 'TransactionController@searchReport');
+    Route::post('/trx/approval', 'TransactionController@approval');
 
     Route::get('/monitoring', 'MonitoringController@browse');
     Route::post('/monitoring/edit', 'MonitoringController@edit');
@@ -74,10 +75,13 @@ Route::group(['middleware' => 'role:admin'], function(){
 Route::group(['middleware' => 'role:user'], function(){
     Route::get('/user/dashboard','UserController@dashboard');
 
-    // Route::get('/request' , 'UserController@request');
-    // Route::get('/availableitems' , 'UserController@inventory');
+    Route::get('/request' , 'UserController@request');
+    Route::get('/availableitems' , 'UserController@inventory');
+    Route::get('/log' , 'UserController@logOrder');
 
-    // Route::get('/user/account','UserController@account');
-    // Route::post('/user/account/changeName','UserController@changeName');
-    // Route::post('/user/account/changePassword','UserController@changePassword');
+    Route::post('/order','UserController@requestTransaction');
+
+    Route::get('/user/account','UserController@account');
+    Route::post('/user/account/changeName','UserController@changeName');
+    Route::post('/user/account/changePassword','UserController@changePassword');
 });

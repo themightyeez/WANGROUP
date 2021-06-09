@@ -9,7 +9,7 @@
         </h4>
         <hr>
         <div class="row">
-            <small class="text-muted col-md-6">Below are the list of inbound/outbound transaction that was happen</small>
+            <small class="text-muted col-md-6">Below are the list of inbound/outbound transaction that was successfully processed</small>
             <small class="text-muted col-md-6">
                 <button class="btn btn-search rounded-pill float-right" data-toggle="modal" data-target="#searchTransaction">     
                     <span data-toggle="tooltip" title="Custom Search" data-placement="left">
@@ -81,7 +81,7 @@
                     @foreach($transaction->product as $k)\
                     <div class=\"col-md-10\"> <span data-toggle=\"tooltip\" title=\"{{ $k->pivot->note ?? '' }}\">{{ $k->name }} </span> </div>\
                     <div class=\"col-md-2\">\
-                            <span class=\"badge badge-{{ $transaction->transaction_type == 'request' ? 'success' : 'danger' }} badge-pill\"> {{ $k->pivot->qty  }} </span>\
+                            <span class=\"badge badge-info badge-pill\"> {{ $k->pivot->qty  }} </span>\
                     </div>\
                     @endforeach\
                     </div>",

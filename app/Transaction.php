@@ -8,6 +8,7 @@ class Transaction extends Model
 {
     //1 = transaction from incoming
     //2 = transaction finished
+    //3 = transaction declined
 
     //belongsToMany( {{Model Neighbor}} {{Intermediate Tabel}} {{Kolom di Intermediate tabel yg model ini isi}} {{Lawan relasinya}})
     

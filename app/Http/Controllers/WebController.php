@@ -20,7 +20,9 @@ class WebController extends Controller
     }
 
     public function incoming() {
-        return view('incomingrequest');
+        $transactions = Transaction::select('id','transaction_id', 'transaction_type', 'contact', 'created_at')->where('status','1')->with('product')->get();
+
+        return view('incomingrequest', compact('transactions'));
     }
 
     public function inventory() {

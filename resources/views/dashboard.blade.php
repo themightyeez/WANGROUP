@@ -13,7 +13,7 @@
         <div class="card mb-3 border border-white rounded-custom">
             <div class="row no-gutters">
                 <div class="col-md-4 py-4 bg-card">
-                    <div class="px-5">
+                    <div class="px-5 text-center">
                         <i class="fas fa-5x fa-download text-white"></i>
                     </div>
                 </div>
@@ -32,7 +32,7 @@
         <div class="card mb-3 border border-white rounded-custom">
             <div class="row no-gutters">
                 <div class="col-md-4 py-4 bg-card">
-                    <div class="px-5">
+                    <div class="px-5 text-center">
                         <i class="fas fa-5x fa-warehouse text-white"></i>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
         <div class="card mb-3 border border-white rounded-custom">
             <div class="row no-gutters">
                 <div class="col-md-4 py-4 bg-card">
-                    <div class="px-5">
+                    <div class="px-5 text-center">
                     <i class="fas fa-5x fa-shopping-cart text-white"></i>    
                     </div>
                 </div>
@@ -70,7 +70,7 @@
         <div class="card mb-3 border border-white rounded-custom">
             <div class="row no-gutters">
                 <div class="col-md-4 py-4 bg-card">
-                    <div class="px-5">
+                    <div class="px-5 text-center">
                         <i class="fas fa-5x fa-chart-bar text-white"></i>
                     </div>
                 </div>

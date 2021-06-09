@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('user.layouts.layout')
 @section('title', 'Account')
 
 @section('content')
@@ -12,7 +12,7 @@
             <div class="col-md-9">
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                        <form action="{{ action('WebController@changeName') }}" method="POST">
+                        <form action="{{ action('UserController@changeName') }}" method="POST">
                             <div class="col-md-12">
                                 <div class="form-group row">
                                     {{ csrf_field() }}
@@ -29,7 +29,7 @@
                         </form>
                     </div>
                     <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                        <form action="{{ action('WebController@changePassword') }}" method="POST">
+                        <form action="{{ action('UserController@changePassword') }}" method="POST">
                             {{ csrf_field() }}
                             <div class="col-md-12">
                                 <div class="form-group row">
