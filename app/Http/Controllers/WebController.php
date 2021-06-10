@@ -14,6 +14,10 @@ use Alert;
 
 class WebController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function dashboard() {
         $devices = Router::all();
         return view('dashboard', compact('devices'));

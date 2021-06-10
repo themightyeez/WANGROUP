@@ -7,6 +7,10 @@ use App\Supplier;
 
 class SupplierController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function browse(){
         $suppliers = Supplier::all();
         return view('supplier', compact('suppliers'));

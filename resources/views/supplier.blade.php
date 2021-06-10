@@ -19,7 +19,7 @@
             <h5 class="col-md-11 my-3">Contact Detail</h5>
 
             <div class="col-md-1 pt-2">
-                <button class="btn btn-light rounded-pill" data-toggle="modal" data-target="#addSupplier">     
+                <button class="btn btn-search rounded-pill" data-toggle="modal" data-target="#addSupplier">     
                     Add
                 </button>
             </div>
@@ -140,7 +140,7 @@
                 @endphp
             [
                 "{{ $supplier->id }}",
-                "<a class=\"btn-edit-custom\" data-toggle=\"modal\" data-target=\"#editSupplier\" data-id=\"{{$supplier->id}}\" data-name=\"{{$supplier->name}}\" data-phonenumber=\"{{$supplier->phone_number}}\" data-address=\"{{$supplier->address}}\"> <span data-toggle=\"tooltip\" title=\"Edit\" data-placement=\"right\"> {{ $supplier->name}} </span>  </a>",
+                "<span data-toggle=\"tooltip\" title=\"Edit\" data-placement=\"right\"> <a class=\"btn-edit-custom\" data-toggle=\"modal\" data-target=\"#editSupplier\" data-id=\"{{$supplier->id}}\" data-name=\"{{$supplier->name}}\" data-phonenumber=\"{{$supplier->phone_number}}\" data-address=\"{{$supplier->address}}\"> {{ $supplier->name}} </a> </span>",
                 "{{ $supplier->phone_number }}",
                 "{{ $supplier->address }}",
                 "<a href=\"https:\/\/wa.me\/{{$wa}}\" class=\"btn btn-success rounded-pill mb-1\"><i class=\"fab fa-lg fa-whatsapp\"></i></a>\

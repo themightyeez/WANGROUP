@@ -107,7 +107,7 @@
         id: 'mapbox/streets-v11',
         tileSize: 512,
         zoomOffset: -1,
-        accessToken: 'pk.eyJ1Ijoia3Jpc25heXVkYSIsImEiOiJja285Z2Y2bDAwNGNnMnVtbjJzZGU4NXg4In0.67nZNG6fc8Vs0NMjikglwA'
+        accessToken: '{{ env('LEAFLET_TOKEN') }}'
     }).addTo(map);
     
     var headofficepin = L.icon({

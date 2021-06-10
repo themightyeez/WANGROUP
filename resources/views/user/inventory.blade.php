@@ -100,10 +100,10 @@
                 "oLanguage": { "sSearch": "Search: " },
                 "aoColumnDefs": [
                 { "sTitle": "", "aTargets": [0], "bVisible": false, "bSearchable": false}, 
-                { "sTitle" : "Name", "sClass" : "text-center", "bSortable" : false, "sWidth" : "40%", "aTargets": [1] },
+                { "sTitle" : "Name", "sClass" : "text-center", "bSortable" : false, "sWidth" : "30%", "aTargets": [1] },
                 { "sTitle" : "Category", "sClass" : "text-center", "bSortable" : false, "sWidth" : "20%", "aTargets": [2] },
                 { "sTitle" : "Qty", "sClass" : "text-center", "bSortable" : false, "sWidth" : "5%", "aTargets": [3] },
-                { "sTitle" : "Notes", "sClass" : "text-center", "bSortable" : false, "sWidth" : "35%", "aTargets": [4] },
+                { "sTitle" : "Notes", "sClass" : "text-center", "bSortable" : false, "sWidth" : "45%", "aTargets": [4] },
                 ],
                 "iDisplayLength": 25,
                 "sPaginationType": "full_numbers",

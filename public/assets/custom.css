@@ -222,3 +222,48 @@ table > thead > tr > th {
 .input-text {
     font-size: 80%;
 }
+
+/* Error Handling Pages Styling */
+.empty-4-7{
+    padding: 2.5rem 2rem 5rem;
+}
+.empty-4-7 .main-img{
+    object-fit: cover;
+    object-position: center;
+    margin-bottom: 0.5rem;
+    width: 83.333333%;
+}
+.empty-4-7 .title-text{
+    font: 600 1.875rem/2.25rem Poppins, sans-serif;            
+    margin-bottom: 1.25rem;
+}
+.empty-4-7 .title-caption{
+    color: #707092;
+    margin-bottom: 4rem;
+    letter-spacing: 0.025em;
+    line-height: 1.75rem;
+}
+.empty-4-7 .btn-back{
+    background-color: #524EEE;
+    font: 600 1.125rem/1.75rem Poppins, sans-serif;                      
+    padding: 1rem 1.5rem;
+    border-radius: 0.75rem;
+}
+.empty-4-7 .btn-back:hover{
+    background-color: #eb80d2;
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+@media(min-width: 425px){
+    .empty-4-7 .title-text{
+    font-size: 40px;
+  }
+}
+@media (min-width: 576px) {
+    .empty-4-7{
+        padding: 3.5rem 2rem 4rem;               
+    }
+    .empty-4-7 .main-img{
+    margin-bottom: 0.625rem;
+    width: auto;
+    }
+}      

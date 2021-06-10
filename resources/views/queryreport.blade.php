@@ -8,9 +8,16 @@
             Search Result Report 
         </h4>
         <hr>
-        <div>
-            <small class="text-muted mb-5">Below are list of searched query inbound/outbound transaction</small>
-            <div class="mt-4 table-responsive-sm">
+        <div class="row">
+            <small class="text-muted mb-5 col-md-6 col-sm-12">Below are list of searched query inbound/outbound transaction</small>
+            <small class="text-muted mb-5 col-md-6 col-sm-12">
+                <a href="{{ action('WebController@reports') }}" class="btn btn-search rounded-pill float-right">
+                    <span data-toggle="tooltip" title="Back" data-placement="left">
+                        <i class="fas fa-arrow-left"></i>
+                    </span>
+                </a>
+            </small>
+            <div class="mt-4 table-responsive-sm col-md-12 col-sm-12">
                 <table class="table table-hover" id="reportTable">
 
                 </table>

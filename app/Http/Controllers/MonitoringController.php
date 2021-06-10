@@ -10,6 +10,10 @@ use Log;
 
 class MonitoringController extends Controller
 {
+    public function __construct(){
+      $this->middleware('auth');
+    }
+
     public function browse(){
         $devices = Router::all();
         return view('monitoring', compact('devices'));
