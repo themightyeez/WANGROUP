@@ -267,3 +267,23 @@ table > thead > tr > th {
     width: auto;
     }
 }      
+
+/* ===[ Watermark DomPDF ]=== */
+.watermark {
+    position: fixed;
+
+    /** 
+        Set a position in the page for your image
+        This should center it vertically
+    **/
+    bottom:   8cm;
+    left:     3cm;
+    opacity: 0.1;
+
+    /** Change image dimensions**/
+    width:   50%;
+    height:   50%;
+
+    /** Your watermark should be behind every content**/
+    z-index:  -1000;
+}

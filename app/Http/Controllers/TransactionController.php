@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Transaction;
-use Log;
 use Auth;
 use DB;
 use DateTime;
+use Log;
+use PDF;
 
 class TransactionController extends Controller
 {
@@ -170,5 +171,21 @@ class TransactionController extends Controller
                 return redirect()->action('WebController@incoming')->with('toast_success', 'Transaction rejected.');
                 break;
         }
+    }
+
+    public function exportPdf(Request $req){
+        $transaction = Transaction::find($req->get('id'));
+
+        if (!$transaction) {
+            return redirect()->action('WebController@reports')->with('toast_error', 'Invalid transaction ID.');
+        }
+
+        $pdf = PDF::loadView('exportpdf', ['transaction' => $transaction]);
+        
+        return $pdf->download('export-wangroup-'.$transaction->transaction_id.'.pdf');
+    }
+
+    public function dummypdf(){
+        return  view('exportpdf');
     }
 }
