@@ -180,12 +180,8 @@ class TransactionController extends Controller
             return redirect()->action('WebController@reports')->with('toast_error', 'Invalid transaction ID.');
         }
 
-        $pdf = PDF::loadView('exportpdf', ['transaction' => $transaction]);
+        $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('exportpdf', ['transaction' => $transaction]);
         
-        return $pdf->download('export-wangroup-'.$transaction->transaction_id.'.pdf');
-    }
-
-    public function dummypdf(){
-        return  view('exportpdf');
+        return $pdf->download('invoice-wangroup-'.$transaction->transaction_id.'.pdf');
     }
 }

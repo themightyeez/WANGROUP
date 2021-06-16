@@ -27,7 +27,7 @@
                     <button class="btn btn-account btn-account-kanan dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-lg fa-user-circle"></i>
                     </button>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                    <div class="dropdown-menu dropdown-menu-right animate" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="{{ action('WebController@account') }}">Account</a>
                         <a class="dropdown-item text-danger" href="{{ action('AuthController@logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a>
                     </div>

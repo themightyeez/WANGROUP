@@ -60,7 +60,6 @@ Route::group(['middleware' => 'role:admin'], function(){
     Route::get('/trx/query', 'TransactionController@searchReport');
     Route::post('/trx/approval', 'TransactionController@approval');
     Route::post('/trx/export-pdf', 'TransactionController@exportPdf');
-    Route::get('/trx/dummy', 'TransactionController@dummyPdf');
 
     Route::get('/monitoring', 'MonitoringController@browse');
     Route::post('/monitoring/edit', 'MonitoringController@edit');
